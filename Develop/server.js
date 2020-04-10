@@ -1,8 +1,8 @@
 const express = require("express");
 
 
-const addHtmlRoutes = require("./public/htmlRoutes");
-const addApiRoutes = require("./public/apiRoutes");
+const addHtmlRoutes = require("./routes/htmlRoutes");
+const addApiRoutes = require("./routes/apiRoutes");
 
 const app = express();
 
