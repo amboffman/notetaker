@@ -1,14 +1,23 @@
 {
-  "name": "note-taker",
+  "name": "d",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Anthony Boffman",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "express": "^4.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amboffman/notetaker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amboffman/notetaker/issues"
+  },
+  "homepage": "https://github.com/amboffman/notetaker#readme",
+  "description": ""
 }
