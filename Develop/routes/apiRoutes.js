@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+let noteData = 0;
 
 module.exports = (app) => {
   app.get("/api/notes", (req, res) => {
@@ -21,7 +22,10 @@ module.exports = (app) => {
         console.log(err)
       };
       const info = JSON.parse(data);
-      info.push(req.body);
+      const requestInfo = req.body;
+      const id = noteData++;
+      requestInfo.id = id;
+      info.push(requestInfo);
       const newObj = JSON.stringify(info);
       fs.writeFile(database, newObj, (err) => {
         if (err) {
@@ -31,4 +35,14 @@ module.exports = (app) => {
       })
     });
   })
+
+  app.delete("/api/notes/:id", (req, res) => {
+    const database = path.join(__dirname, "../db/db.json");
+    console.log(req.params.id)
+    res.end()
+
+  })
+
+
+
 }
