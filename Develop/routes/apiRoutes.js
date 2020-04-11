@@ -38,8 +38,25 @@ module.exports = (app) => {
 
   app.delete("/api/notes/:id", (req, res) => {
     const database = path.join(__dirname, "../db/db.json");
-    console.log(req.params.id)
-    res.end()
+    const deleteNoteID = req.params.id;
+    fs.readFile(database, (err, data) => {
+      if (err) {
+        console.log(err)
+      };
+      const info = JSON.parse(data)
+        const noteIndex = info.findIndex(note => JSON.stringify(note.id) === deleteNoteID);
+        if(noteIndex === -1){
+          return res.sendStatus(404)
+        }
+        info.splice(noteIndex, 1);
+        fs.writeFile(database, JSON.stringify(info), (err) => {
+          if (err) {
+            console.log(err)
+          }
+
+          res.sendStatus(200)
+        })
+      })
 
   })
 
